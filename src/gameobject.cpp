@@ -22,7 +22,7 @@ GameObject::~GameObject()
 
 void GameObject::Update()
 {
-    x += 10;
+    //O
 }
 
 void GameObject::LoadTexture(SDL_Texture* ptexture)

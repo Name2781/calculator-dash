@@ -49,7 +49,7 @@ void RenderWindow::DrawObject(GameObject& gameObject)
     dest.w = gameObject.sw * gameObject.w;
     dest.h = gameObject.sh * gameObject.h;
 
-    SDL_RenderCopy(renderer, gameObject.GetTexture(), &src, &dest);
+    SDL_RenderCopy(renderer, gameObject.texture, &src, &dest);
 }
 
 void RenderWindow::Clear()
