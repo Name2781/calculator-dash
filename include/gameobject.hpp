@@ -5,7 +5,7 @@
 
 class GameObject
 {
-    private:
+    public:
         float x = 0;
         float y = 0;
         float w = 1;
@@ -17,19 +17,11 @@ class GameObject
         float fw = 0;
         float fh = 0;
         SDL_Texture* texture;
-    public:
+        
         GameObject(float px, float py, float pw, float ph, int psx, int psy, int psw, int psh);
         ~GameObject();
         void Update();
         void LoadTexture(SDL_Texture* ptexture);
 
-        float GetX();
-        float GetY();
-        float GetW();
-        float GetH();
-        int GetSX();
-        int GetSY();
-        int GetSW();
-        int GetSH();
         SDL_Texture* GetTexture();
 };

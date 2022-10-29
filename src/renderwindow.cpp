@@ -38,16 +38,16 @@ void RenderWindow::Draw(SDL_Texture* texture, SDL_Rect src, SDL_Rect dest)
 void RenderWindow::DrawObject(GameObject& gameObject)
 {
     SDL_Rect src;
-    src.x = gameObject.GetSX();
-    src.y = gameObject.GetSY();
-    src.w = gameObject.GetSW();
-    src.h = gameObject.GetSH();
+    src.x = gameObject.sx;
+    src.y = gameObject.sy;
+    src.w = gameObject.sw;
+    src.h = gameObject.sh;
 
     SDL_Rect dest;
-    dest.x = gameObject.GetX();
-    dest.y = gameObject.GetY();
-    dest.w = gameObject.GetSW() * gameObject.GetW();
-    dest.h = gameObject.GetSH() * gameObject.GetH();
+    dest.x = gameObject.x;
+    dest.y = gameObject.y;
+    dest.w = gameObject.sw * gameObject.w;
+    dest.h = gameObject.sh * gameObject.h;
 
     SDL_RenderCopy(renderer, gameObject.GetTexture(), &src, &dest);
 }
