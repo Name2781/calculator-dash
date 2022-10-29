@@ -1,3 +1,3 @@
-# piss
+# Calculator Dash
 
-# ass
+a bad rip-off of Geometry Dash made in C++ with SDL2.
