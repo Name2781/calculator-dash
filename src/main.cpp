@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include "renderwindow.hpp"
+#include "renderwindow.hpp"w
 #include "gameobject.hpp"
 #include "vector2.hpp"
 #include "background.hpp"
@@ -11,7 +11,7 @@
 RenderWindow window("Calculator Dash", 800, 600);
 bool gameRunning = true;
 SDL_Event event;
-Background background(100.0f, 100.0f, 0.25f, 0.25f, &window);
+Background background(0.0f, 0.0f, 1.0f, 1.0f, &window);
 
 void Init();
 void Update();
