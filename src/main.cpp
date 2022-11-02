@@ -7,11 +7,13 @@
 #include "gameobject.hpp"
 #include "vector2.hpp"
 #include "background.hpp"
+#include "ground.hpp"
 
 RenderWindow window("Calculator Dash", 800, 600);
 bool gameRunning = true;
 SDL_Event event;
 Background background(0.0f, 0.0f, 1.0f, 1.0f, &window);
+Ground ground(0.0f, 450.0f, 1.0f, 1.0f, &window);
 
 void Init();
 void Update();
@@ -70,11 +72,13 @@ int main(int argc, char* args[])
 void Init()
 {
     background.LoadTexture(window.LoadTexture("res/images/game_background.png"));
+    ground.LoadTexture(window.LoadTexture("res/images/game_ground.png"));
 }
 
 void Update()
 {
     background.Update();
+    ground.Update();
 }
 
 void Draw()
@@ -82,6 +86,7 @@ void Draw()
     window.Clear();
 
     background.Draw();
+    ground.Draw();
 
     window.Show();
 }
