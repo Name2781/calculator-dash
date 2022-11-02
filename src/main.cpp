@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include "renderwindow.hpp"w
+#include "renderwindow.hpp"
 #include "gameobject.hpp"
 #include "vector2.hpp"
 #include "background.hpp"
