@@ -5,11 +5,13 @@
 
 #include "renderwindow.hpp"
 #include "gameobject.hpp"
+#include "vector2.hpp"
+#include "background.hpp"
 
-RenderWindow window("Calculator Dash", 800, 600);;
+RenderWindow window("Calculator Dash", 800, 600);
 bool gameRunning = true;
 SDL_Event event;
-GameObject background(200, 200, 0.125f, 0.125f, 0, 0, 1024, 1024);
+Background background(100.0f, 100.0f, 0.25f, 0.25f, &window);
 
 void Init();
 void Update();
@@ -79,7 +81,7 @@ void Draw()
 {
     window.Clear();
 
-    window.DrawObject(background);
+    background.Draw();
 
     window.Show();
 }

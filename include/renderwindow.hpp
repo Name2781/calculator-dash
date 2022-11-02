@@ -17,7 +17,6 @@ class RenderWindow
         ~RenderWindow();
         SDL_Texture* LoadTexture(const char* filepath);
         void Draw(SDL_Texture* texture, SDL_Rect src, SDL_Rect dest);
-        void DrawObject(GameObject& gameObject);
         void Clear();
         void Show();
 };

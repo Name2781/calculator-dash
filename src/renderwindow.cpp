@@ -35,23 +35,6 @@ void RenderWindow::Draw(SDL_Texture* texture, SDL_Rect src, SDL_Rect dest)
     SDL_RenderCopy(renderer, texture, &src, &dest);
 }
 
-void RenderWindow::DrawObject(GameObject& gameObject)
-{
-    SDL_Rect src;
-    src.x = gameObject.sx;
-    src.y = gameObject.sy;
-    src.w = gameObject.sw;
-    src.h = gameObject.sh;
-
-    SDL_Rect dest;
-    dest.x = gameObject.x;
-    dest.y = gameObject.y;
-    dest.w = gameObject.sw * gameObject.w;
-    dest.h = gameObject.sh * gameObject.h;
-
-    SDL_RenderCopy(renderer, gameObject.texture, &src, &dest);
-}
-
 void RenderWindow::Clear()
 {
     SDL_RenderClear(renderer);
