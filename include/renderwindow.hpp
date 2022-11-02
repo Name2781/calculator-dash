@@ -19,4 +19,5 @@ class RenderWindow
         void Draw(SDL_Texture* texture, SDL_Rect src, SDL_Rect dest);
         void Clear();
         void Show();
+        SDL_Renderer* GetRenderer();
 };

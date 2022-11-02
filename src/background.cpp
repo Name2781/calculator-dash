@@ -9,8 +9,8 @@ Background::Background(float px, float py, float pw, float ph, RenderWindow* pWi
 
     sPos.x = 0;
     sPos.y = 0;
-    sScale.x = 1024;
-    sScale.y = 1024;
+    sScale.x = 800;
+    sScale.y = 600;
 
     fScale.x = sScale.x * scale.x;
     fScale.y = sScale.y * scale.y;

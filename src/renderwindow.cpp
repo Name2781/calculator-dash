@@ -44,3 +44,8 @@ void RenderWindow::Show()
 {
     SDL_RenderPresent(renderer);
 }
+
+SDL_Renderer* RenderWindow::GetRenderer()
+{
+    return renderer;
+}
