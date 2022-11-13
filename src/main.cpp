@@ -8,12 +8,14 @@
 #include "vector2.hpp"
 #include "background.hpp"
 #include "ground.hpp"
+#include "player.hpp"
 
 RenderWindow window("Calculator Dash", 800, 600);
 bool gameRunning = true;
 SDL_Event event;
 Background background(0.0f, 0.0f, 1.0f, 1.0f, &window);
 Ground ground(0.0f, 450.0f, 1.0f, 1.0f, &window);
+Player player(0.0f, 0.0f, 1.0f, 1.0f, &window);
 
 void Init();
 void Update();
@@ -73,12 +75,14 @@ void Init()
 {
     background.LoadTexture(window.LoadTexture("res/images/game_background.png"));
     ground.LoadTexture(window.LoadTexture("res/images/game_ground.png"));
+    player.LoadTexture(window.LoadTexture("res/images/game_spritesheet.png"));
 }
 
 void Update()
 {
     background.Update();
     ground.Update();
+    player.Update();
 }
 
 void Draw()
@@ -87,6 +91,7 @@ void Draw()
 
     background.Draw();
     ground.Draw();
+    player.Draw();
 
     window.Show();
 }
@@ -96,5 +101,7 @@ void Clean()
     delete &window;
     delete &event;
     delete &background;
+    delete &ground;
+    delete &player;
     SDL_Quit();
 }
