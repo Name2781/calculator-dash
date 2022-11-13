@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -9,6 +10,7 @@
 #include "background.hpp"
 #include "ground.hpp"
 #include "player.hpp"
+#include "platform.hpp"
 
 RenderWindow window("Calculator Dash", 800, 600);
 bool gameRunning = true;
@@ -16,6 +18,10 @@ SDL_Event event;
 Background background(0.0f, 0.0f, 1.0f, 1.0f, &window);
 Ground ground(0.0f, 450.0f, 1.0f, 1.0f, &window);
 Player player(0.0f, 0.0f, 1.0f, 1.0f, &window);
+std::vector<Platform> platforms; //broken
+
+Platform pl1 = Platform(200.0f, 300.0f, 1.0f, 1.0f, &window); //broken
+Platform pl2 = Platform(400.0f, 300.0f, 1.0f, 1.0f, &window); //broken
 
 void Init();
 void Update();
@@ -76,6 +82,12 @@ void Init()
     background.LoadTexture(window.LoadTexture("res/images/game_background.png"));
     ground.LoadTexture(window.LoadTexture("res/images/game_ground.png"));
     player.LoadTexture(window.LoadTexture("res/images/game_spritesheet.png"));
+
+    pl1.LoadTexture(window.LoadTexture("res/images/game_spritesheet.png")); //broken
+    platforms.push_back(pl1); //broken
+
+    pl2.LoadTexture(window.LoadTexture("res/images/game_spritesheet.png")); //broken
+    platforms.push_back(pl2); //broken
 }
 
 void Update()
@@ -83,6 +95,10 @@ void Update()
     background.Update();
     ground.Update();
     player.Update();
+    for (int i = 0; i < platforms.size() - 1; i++) //broken
+    {
+        platforms[i].Update(); //broken
+    }
 }
 
 void Draw()
@@ -92,6 +108,10 @@ void Draw()
     background.Draw();
     ground.Draw();
     player.Draw();
+    for (int i = 0; i < platforms.size() - 1; i++) //broken
+    {
+        platforms[i].Draw(); //broken
+    }
 
     window.Show();
 }
@@ -103,5 +123,8 @@ void Clean()
     delete &background;
     delete &ground;
     delete &player;
+
+    delete &pl1;
+    delete &pl2;
     SDL_Quit();
 }
