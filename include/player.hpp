@@ -6,10 +6,15 @@
 #include "renderwindow.hpp"
 #include "gameobject.hpp"
 #include "vector2.hpp"
+#include "math.hpp"
 
 class Player : GameObject
 {
     private:
+        float xVel = 0.0f;
+        float yVel = 0.0f;
+        float speed = 5.0f;
+        float gravity = 0.5f;
         RenderWindow* window;
         SDL_Texture* texture;
     public:

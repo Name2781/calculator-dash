@@ -31,7 +31,28 @@ void Player::LoadTexture(SDL_Texture* pTexture)
 
 void Player::Update()
 {
+    const Uint8* state = SDL_GetKeyboardState(NULL);
 
+    if (state[SDL_SCANCODE_RIGHT])
+    {
+        xVel = speed;
+    }
+    else if (state[SDL_SCANCODE_LEFT])
+    {
+        xVel = -speed;
+    }
+    else
+    {
+        xVel = 0.0f;
+    }
+
+    yVel += gravity;
+
+    pos.x += xVel;
+    pos.y += yVel;
+
+    pos.x = Math::Clamp(0, 800 - 64.0f, pos.x);
+    pos.y = Math::Clamp(0, 450 - 64.0f, pos.y);
 }
 
 void Player::Draw()
