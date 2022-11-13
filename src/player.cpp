@@ -31,6 +31,15 @@ void Player::LoadTexture(SDL_Texture* pTexture)
 
 void Player::Update()
 {
+    if (pos.y >= (450 - 69.0f))
+    {
+        isGrounded = true;
+    }
+    else
+    {
+        isGrounded = false;
+    }
+
     const Uint8* state = SDL_GetKeyboardState(NULL);
 
     if (state[SDL_SCANCODE_RIGHT])
@@ -44,6 +53,17 @@ void Player::Update()
     else
     {
         xVel = 0.0f;
+    }
+
+    if (state[SDL_SCANCODE_SPACE] && keyJumped == false && isGrounded == true)
+    {
+        yVel = -jumpForce;
+        keyJumped = true;
+        isGrounded = false;
+    }
+    else if (!state[SDL_SCANCODE_SPACE])
+    {
+        keyJumped = false;
     }
 
     yVel += gravity;

@@ -15,6 +15,9 @@ class Player : GameObject
         float yVel = 0.0f;
         float speed = 5.0f;
         float gravity = 0.5f;
+        float jumpForce = 10.0f;
+        bool keyJumped = false;
+        bool isGrounded = false;
         RenderWindow* window;
         SDL_Texture* texture;
     public:
