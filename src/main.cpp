@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <list>
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -18,10 +19,9 @@ SDL_Event event;
 Background background(0.0f, 0.0f, 1.0f, 1.0f, &window);
 Ground ground(0.0f, 450.0f, 1.0f, 1.0f, &window);
 Player player(0.0f, 0.0f, 1.0f, 1.0f, &window);
-std::vector<Platform> platforms; //broken
-
-Platform pl1 = Platform(200.0f, 300.0f, 1.0f, 1.0f, &window); //broken
-Platform pl2 = Platform(400.0f, 300.0f, 1.0f, 1.0f, &window); //broken
+std::vector<Platform*> platforms;
+Platform* p1 = new Platform(0.0f, 0.0f, 1.0f, 1.0f, &window);
+Platform* p2 = new Platform(100.0f, 0.0f, 1.0f, 1.0f, &window);
 
 void Init();
 void Update();
@@ -83,11 +83,11 @@ void Init()
     ground.LoadTexture(window.LoadTexture("res/images/game_ground.png"));
     player.LoadTexture(window.LoadTexture("res/images/game_spritesheet.png"));
 
-    pl1.LoadTexture(window.LoadTexture("res/images/game_spritesheet.png")); //broken
-    platforms.push_back(pl1); //broken
+    p1->LoadTexture(window.LoadTexture("res/images/game_spritesheet.png"));
+    p2->LoadTexture(window.LoadTexture("res/images/game_spritesheet.png"));
 
-    pl2.LoadTexture(window.LoadTexture("res/images/game_spritesheet.png")); //broken
-    platforms.push_back(pl2); //broken
+    platforms.push_back(p1);
+    platforms.push_back(p2);
 }
 
 void Update()
@@ -95,10 +95,6 @@ void Update()
     background.Update();
     ground.Update();
     player.Update();
-    for (int i = 0; i < platforms.size() - 1; i++) //broken
-    {
-        platforms[i].Update(); //broken
-    }
 }
 
 void Draw()
@@ -108,9 +104,10 @@ void Draw()
     background.Draw();
     ground.Draw();
     player.Draw();
-    for (int i = 0; i < platforms.size() - 1; i++) //broken
+
+    for (Platform*& p : platforms)
     {
-        platforms[i].Draw(); //broken
+        p->Draw();
     }
 
     window.Show();
@@ -123,8 +120,5 @@ void Clean()
     delete &background;
     delete &ground;
     delete &player;
-
-    delete &pl1;
-    delete &pl2;
     SDL_Quit();
 }
